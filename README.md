@@ -1,0 +1,2 @@
+# lottery
+the first homework
