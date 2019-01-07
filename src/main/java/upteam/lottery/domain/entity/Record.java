@@ -4,14 +4,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author 周廷宇
  */
 @Table(name = "lottery_record")
-public class Record {
+public class Record implements Serializable {
 
+    private static final long serialVersionUID = 1061168385041748060L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer recordId;

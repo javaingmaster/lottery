@@ -11,7 +11,7 @@ databaseChangeLog(logicalFilePath: 'prize.groovy') {
             }
 
             column(name: 'prize_worth', type: 'INT', remarks: 'worth of prize') {
-                constraints(nullable: false)
+                constraints(nullable: true)
             }
             column(name: 'prize_stock', type: 'INT', remarks: 'prize numbers') {
                 constraints(nullable: false)

@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +12,8 @@ import java.util.List;
  * @author 周廷宇
  */
 @Table(name = "lottery_activity")
-public class Activity {
+public class Activity implements Serializable {
+    private static final long serialVersionUID = -242981554568339060L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

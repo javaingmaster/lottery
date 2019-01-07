@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
  */
 @Table(name = "lottery_user")
 public class User extends BaseEntity{
+    private static final long serialVersionUID = 2684642429918408713L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

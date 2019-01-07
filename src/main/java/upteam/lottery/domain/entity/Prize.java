@@ -2,14 +2,17 @@ package upteam.lottery.domain.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author 周廷宇
  */
 @Table(name = "lottery_prize")
-public class Prize {
+public class Prize implements Serializable {
 
+
+    private static final long serialVersionUID = 1807835691482130194L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer prizeId;

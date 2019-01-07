@@ -11,7 +11,7 @@ databaseChangeLog(logicalFilePath: 'group.groovy') {
             }
 
             column(name: 'group_captain', type: 'BIGINT UNSIGNED', remarks: 'captain id') {
-                constraints(nullable: false)
+                constraints(nullable: true)
             }
         }
     }
