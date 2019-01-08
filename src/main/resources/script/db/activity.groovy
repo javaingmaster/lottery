@@ -15,6 +15,9 @@ databaseChangeLog(logicalFilePath: 'activity.groovy') {
             column(name: 'activity_time', type: 'DATETIME', remarks: 'start time of activity') {
                 constraints(nullable: true)
             }
+            column(name: 'activity_rule', type: 'BIGINT UNSIGNED', remarks: 'activity rule') {
+                constraints(nullable: false)
+            }
         }
     }
 }

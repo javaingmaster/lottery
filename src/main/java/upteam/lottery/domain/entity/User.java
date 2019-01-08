@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
  * @author 周廷宇
  */
 @Table(name = "lottery_user")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
     private static final long serialVersionUID = 2684642429918408713L;
 
     @Id
@@ -29,20 +29,16 @@ public class User extends BaseEntity{
     @Column(name = "user_token")
     private String userToken;
 
-    @NotNull
-    @Column(name = "group_id")
-    private Integer groupId;
-
     @Column(name = "user_gender")
     private Integer userGender;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(@NotNull String userName, @NotNull String userPassword, @NotNull Integer userRole, @NotNull Integer groupId) {
+    public User(@NotNull String userName, @NotNull String userPassword, @NotNull Integer userRole) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userRole = userRole;
-        this.groupId = groupId;
     }
 
     public Integer getUserId() {
@@ -85,14 +81,6 @@ public class User extends BaseEntity{
         this.userToken = userToken;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
     public Integer getUserGender() {
         return userGender;
     }
@@ -106,8 +94,6 @@ public class User extends BaseEntity{
         return "User{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
-                ", userRole=" + userRole +
-                ", groupId=" + groupId +
-                '}';
+                ", userRole=" + userRole;
     }
 }

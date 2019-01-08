@@ -30,13 +30,17 @@ public class Activity implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date activityTime;
 
+    @Column(name = "activity_rule")
+    private Integer activityRule;
+
     private List<Prize> prizes;
 
     public Activity() {
     }
 
-    public Activity(@NotNull String activityName) {
+    public Activity(@NotNull String activityName, Integer activityRule) {
         this.activityName = activityName;
+        this.activityRule = activityRule;
     }
 
     public Integer getActivityId() {
@@ -77,6 +81,14 @@ public class Activity implements Serializable {
 
     public void setPrizes(List<Prize> prizes) {
         this.prizes = prizes;
+    }
+
+    public Integer getActivityRule() {
+        return activityRule;
+    }
+
+    public void setActivityRule(Integer activityRule) {
+        this.activityRule = activityRule;
     }
 
     @Override

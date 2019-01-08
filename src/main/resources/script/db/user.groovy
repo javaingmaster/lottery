@@ -17,9 +17,6 @@ databaseChangeLog(logicalFilePath: 'user.groovy') {
             }
             column(name: 'user_token', type: 'VARCHAR(100)', remarks: 'token') {
             }
-            column(name: 'group_id',type: 'TINYINT',remarks: 'belong to which group'){
-                constraints(nullable: false)
-            }
             column(name: 'user_gender', type: 'TINYINT', remarks: 'gender') {
                 constraints(nullable: true)
             }
