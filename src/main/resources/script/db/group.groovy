@@ -13,6 +13,9 @@ databaseChangeLog(logicalFilePath: 'group.groovy') {
             column(name: 'group_captain', type: 'BIGINT UNSIGNED', remarks: 'captain id') {
                 constraints(nullable: true)
             }
+            column(name: 'group_ratio', type: 'FLOAT', remarks: 'ratio') {
+                constraints(nullable: true)
+            }
         }
     }
 }

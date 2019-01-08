@@ -20,6 +20,9 @@ databaseChangeLog(logicalFilePath: 'user.groovy') {
             column(name: 'user_gender', type: 'TINYINT', remarks: 'gender') {
                 constraints(nullable: true)
             }
+            column(name: 'user_ratio', type: 'FLOAT', remarks: 'ratio') {
+                constraints(nullable: true)
+            }
             column(name: 'last_update', type: 'DATETIME', remarks: 'time of last update')
             column(name: 'last_update_by', type: 'VARCHAR(20)', remarks: 'people who change the table at last')
             column(name: 'version', type: 'INT', remarks: 'version for table') {

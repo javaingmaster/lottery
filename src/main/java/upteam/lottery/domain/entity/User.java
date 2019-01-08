@@ -32,6 +32,9 @@ public class User extends BaseEntity {
     @Column(name = "user_gender")
     private Integer userGender;
 
+    @Column(name = "user_ratio")
+    private Double userRatio;
+
     public User() {
     }
 
@@ -87,6 +90,14 @@ public class User extends BaseEntity {
 
     public void setUserGender(Integer userGender) {
         this.userGender = userGender;
+    }
+
+    public Double getUserRatio() {
+        return userRatio;
+    }
+
+    public void setUserRatio(Double userRatio) {
+        this.userRatio = userRatio;
     }
 
     @Override

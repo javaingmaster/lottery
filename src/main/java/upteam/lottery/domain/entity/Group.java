@@ -23,6 +23,9 @@ public class Group implements Serializable {
     @Column(name = "group_captain")
     private Integer groupCaptain;
 
+    @Column(name = "group_ratio")
+    private Double groupRatio;
+
     private List<User> numbers;
 
     public Group() {
@@ -62,6 +65,14 @@ public class Group implements Serializable {
 
     public void setNumbers(List<User> numbers) {
         this.numbers = numbers;
+    }
+
+    public Double getGroupRatio() {
+        return groupRatio;
+    }
+
+    public void setGroupRatio(Double groupRatio) {
+        this.groupRatio = groupRatio;
     }
 
     @Override

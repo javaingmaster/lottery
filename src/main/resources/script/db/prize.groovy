@@ -17,6 +17,9 @@ databaseChangeLog(logicalFilePath: 'prize.groovy') {
                 constraints(nullable: false)
             }
 
+            column(name: 'prize_ratio', type: 'FLOAT', remarks: 'ratio') {
+                constraints(nullable: true)
+            }
         }
     }
 }
