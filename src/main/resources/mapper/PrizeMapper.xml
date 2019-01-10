@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="upteam.lottery.infra.mapper.PrizeMapper">
+    <select id="listPrizeByRuleId" parameterType="int" resultType="upteam.lottery.domain.entity.Prize">
+        select p.prize_id,p.prize_name,p.prize_worth,p.prize_stock from prize p
+            where exists(
+                select 1 from rule_prize rp where rp.prize_id=p.prize_id and rp.rule_id=#{ruleId}
+            )
+    </select>
+</mapper>

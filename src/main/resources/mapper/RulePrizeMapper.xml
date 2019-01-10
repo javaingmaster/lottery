@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="upteam.lottery.infra.mapper.RulePrizeMapper">
+    <select id="listRulePrize" parameterType="int" resultType="upteam.lottery.domain.entity.RulePrize">
+      select prize_id, prize_ratio from rule_prize
+          where rule_id=#{ruleId}
+  </select>
+</mapper>

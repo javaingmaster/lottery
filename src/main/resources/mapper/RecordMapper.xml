@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="upteam.lottery.infra.mapper.RecordMapper">
+    <select id="listAllRecords" resultType="upteam.lottery.domain.entity.Record">
+        select r.record_id,r.record_type,r.lucky_dog_id,r.lucky_time,r.prize_id from ${table} r
+    </select>
+
+    <select id="listRecordsByActivityId" resultType="upteam.lottery.domain.entity.Record">
+        select r.record_id,r.record_type,r.lucky_dog_id,r.lucky_time,r.prize_id from ${table} r
+            where r.activity_id=#{activityId}
+    </select>
+
+    <select id="saveRecords">
+        insert into ${table} (record_type,lucky_dog_id,lucky_time,prize_id,activity_id) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.recordType,jdbcType=TINYINT},
+            #{item.luckyDogId,jdbcType=BIGINT},
+            #{item.luckyTime,jdbcType=DATETIME},
+            #{item.prizeId,jdbcType=BIGINT},
+            #{item.activityId,jdbcType=BIGINT}
+            )
+        </foreach>
+    </select>
+</mapper>

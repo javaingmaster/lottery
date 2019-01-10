@@ -13,6 +13,9 @@ databaseChangeLog(logicalFilePath: 'lottery_rule.groovy') {
             column(name: 'if_back', type: 'TINYINT', remarks: 'if back') {
                 constraints(nullable: false)
             }
+            column(name: 'if_public', type: 'TINYINT', remarks: 'if public') {
+                constraints(nullable: false)
+            }
         }
     }
 }

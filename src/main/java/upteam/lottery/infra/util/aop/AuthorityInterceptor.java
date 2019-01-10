@@ -7,7 +7,7 @@ import upteam.lottery.infra.util.jwt.TokenMessage;
 import org.apache.log4j.Logger;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
+import upteam.lottery.infra.util.other.AnnotationUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

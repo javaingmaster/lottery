@@ -1,5 +1,7 @@
 package upteam.lottery.api.controller.handler;
 
+import upteam.lottery.infra.util.exception.CannotAccessException;
+import upteam.lottery.infra.util.exception.ErrorLotteryObjectInRuleException;
 import upteam.lottery.infra.util.result.Results;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,6 +24,25 @@ public class GlobalExceptionHandler {
     private static final String BAD_REQUEST_NOTE = " bad request caused: ";
     private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
 
+    /**
+     * <p>lottery object error</p>
+     */
+    @ExceptionHandler(value = CannotAccessException.class)
+    @ResponseBody
+    public Object cannotAccessExceptionError(HttpServletRequest req, Exception e) {
+        logger.info("throw CannotAccessException exception: " + e.getClass());
+        return Results.error(req.getRequestURI() + " CannotAccessException " + e.getMessage());
+    }
+
+    /**
+     * <p>lottery object error</p>
+     */
+    @ExceptionHandler(value = ErrorLotteryObjectInRuleException.class)
+    @ResponseBody
+    public Object lotteryObjectInRuleError(HttpServletRequest req, Exception e) {
+        logger.info("throw ErrorLotteryObjectInRuleException exception: " + e.getClass());
+        return Results.error(req.getRequestURI() + " ErrorLotteryObjectInRuleException " + e.getMessage());
+    }
 
     /**
      * <p>unknown error</p>

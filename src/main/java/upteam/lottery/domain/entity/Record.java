@@ -10,13 +10,12 @@ import java.util.Date;
 /**
  * @author 周廷宇
  */
-@Table(name = "lottery_record")
 public class Record implements Serializable {
 
     private static final long serialVersionUID = 1061168385041748060L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer recordId;
+    private Integer record_id;
 
     @Column(name = "record_type")
     @NotNull
@@ -35,22 +34,27 @@ public class Record implements Serializable {
     @NotNull
     private Integer prizeId;
 
+    @Column(name = "activity_id")
+    @NotNull
+    private Integer activityId;
+
     public Record() {
     }
 
-    public Record(@NotNull Integer recordType, @NotNull Integer luckyDogId, @NotNull Date luckyTime, @NotNull Integer prizeId) {
+    public Record(@NotNull Integer recordType, @NotNull Integer luckyDogId, @NotNull Date luckyTime, @NotNull Integer prizeId, @NotNull Integer activityId) {
         this.recordType = recordType;
         this.luckyDogId = luckyDogId;
         this.luckyTime = luckyTime;
         this.prizeId = prizeId;
+        this.activityId = activityId;
     }
 
-    public Integer getRecordId() {
-        return recordId;
+    public Integer getRecord_id() {
+        return record_id;
     }
 
-    public void setRecordId(Integer recordId) {
-        this.recordId = recordId;
+    public void setRecord_id(Integer record_id) {
+        this.record_id = record_id;
     }
 
     public Integer getRecordType() {
@@ -88,11 +92,12 @@ public class Record implements Serializable {
     @Override
     public String toString() {
         return "Record{" +
-                "recordId=" + recordId +
+                "record_id=" + record_id +
                 ", recordType=" + recordType +
                 ", luckyDogId=" + luckyDogId +
                 ", luckyTime=" + luckyTime +
                 ", prizeId=" + prizeId +
+                ", activityId=" + activityId +
                 '}';
     }
 }
