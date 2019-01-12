@@ -1,10 +1,12 @@
 package upteam.lottery.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.sql.Timestamp;;
 import java.util.Date;
 import java.util.List;
 
@@ -28,12 +30,11 @@ public class Activity implements Serializable {
 
     @Column(name = "activity_time")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date activityTime;
 
     @Column(name = "activity_rule")
     private Integer activityRule;
-
-    private List<Prize> prizes;
 
     public Activity() {
     }
@@ -73,14 +74,6 @@ public class Activity implements Serializable {
 
     public void setActivityTime(Date activityTime) {
         this.activityTime = activityTime;
-    }
-
-    public List<Prize> getPrizes() {
-        return prizes;
-    }
-
-    public void setPrizes(List<Prize> prizes) {
-        this.prizes = prizes;
     }
 
     public Integer getActivityRule() {

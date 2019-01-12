@@ -22,4 +22,20 @@ public interface RuleService {
      * @return
      */
     public List<Rule> listAll();
+
+    /**
+     * query a rule and its details
+     *
+     * @param ruleId
+     * @return
+     */
+    public Rule queryOne(Integer ruleId);
+
+    /**
+     * update a rule
+     *
+     * @param rule
+     * @return
+     */
+    public Object updateOneRule(Rule rule);
 }

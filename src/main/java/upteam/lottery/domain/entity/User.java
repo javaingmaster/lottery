@@ -38,6 +38,14 @@ public class User extends BaseEntity {
     public User() {
     }
 
+    public User(String name) {
+        this.userName = name;
+    }
+
+    public User(Integer UserRole) {
+        this.userRole = userRole;
+    }
+
     public User(@NotNull String userName, @NotNull String userPassword, @NotNull Integer userRole) {
         this.userName = userName;
         this.userPassword = userPassword;

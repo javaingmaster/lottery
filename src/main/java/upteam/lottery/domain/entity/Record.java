@@ -1,5 +1,6 @@
 package upteam.lottery.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -28,6 +29,7 @@ public class Record implements Serializable {
     @Column(name = "lucky_time")
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date luckyTime;
 
     @Column(name = "prize_id")

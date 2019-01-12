@@ -35,4 +35,18 @@ public class RuleController {
         logger.info("list all rules");
         return Results.success(ruleService.listAll());
     }
+
+    @ApiOperation("query a rule and its details by id")
+    @GetMapping("/{ruleId}")
+    public Object queryRuleById(@PathVariable(value = "ruleId", required = true) Integer ruleId) {
+        logger.info("query a rule by rule id");
+        return Results.success(ruleService.queryOne(ruleId));
+    }
+
+    @ApiOperation("update a rule")
+    @PutMapping
+    public Object update(@RequestBody Rule rule) {
+        logger.info("update a rule");
+        return Results.success(ruleService.updateOneRule(rule));
+    }
 }

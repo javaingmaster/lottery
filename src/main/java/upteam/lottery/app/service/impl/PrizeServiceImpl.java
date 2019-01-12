@@ -20,4 +20,10 @@ public class PrizeServiceImpl implements PrizeService {
     public List<Prize> listPrizeByRuleId(Integer ruleId) {
         return prizeMapper.listPrizeByRuleId(ruleId);
     }
+
+    @Override
+    public Prize save(Prize prize) {
+        prizeMapper.insert(prize);
+        return prize;
+    }
 }

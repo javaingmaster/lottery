@@ -1,6 +1,8 @@
 package upteam.lottery.infra.mapper;
 
+import upteam.lottery.domain.entity.Group;
 import upteam.lottery.domain.entity.Rule;
+import upteam.lottery.domain.entity.User;
 import upteam.lottery.infra.tkmapper.TkMapper;
 
 import java.util.List;
@@ -23,5 +25,13 @@ public interface RuleMapper extends TkMapper<Rule> {
      * @param ruleId
      * @return a list of user id
      */
-    public List<Integer> listUsersInOneRule(int ruleId);
+    public List<User> listUsersInOneRule(int ruleId);
+
+    /**
+     * list groups in rule
+     *
+     * @param ruleId
+     * @return
+     */
+    public List<Group> listGroupsInRule(int ruleId);
 }

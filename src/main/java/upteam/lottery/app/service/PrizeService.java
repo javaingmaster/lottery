@@ -15,4 +15,12 @@ public interface PrizeService {
      * @return
      */
     public List<Prize> listPrizeByRuleId(Integer ruleId);
+
+    /**
+     * save a prize
+     *
+     * @param prize
+     * @return
+     */
+    public Prize save(Prize prize);
 }

@@ -7,4 +7,8 @@
       select prize_id, prize_ratio from rule_prize
           where rule_id=#{ruleId}
   </select>
+    <select id="listRulePrizeAsPrize" parameterType="int" resultType="upteam.lottery.domain.entity.Prize">
+        select prize_id, prize_ratio from rule_prize
+          where rule_id=#{ruleId}
+    </select>
 </mapper>

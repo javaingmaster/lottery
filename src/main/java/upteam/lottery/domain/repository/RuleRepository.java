@@ -1,9 +1,7 @@
 package upteam.lottery.domain.repository;
 
 import io.swagger.models.auth.In;
-import upteam.lottery.domain.entity.Rule;
-import upteam.lottery.domain.entity.RuleObject;
-import upteam.lottery.domain.entity.RulePrize;
+import upteam.lottery.domain.entity.*;
 
 import java.util.List;
 
@@ -40,5 +38,29 @@ public interface RuleRepository {
      * @param ruleId
      * @return
      */
-    public List<Integer> listUsersInRule(Integer ruleId);
+    public List<User> listUsersInRule(Integer ruleId);
+
+    /**
+     * list groups in a rule
+     *
+     * @param ruleId
+     * @return
+     */
+    public List<Group> listGroupsInRule(Integer ruleId);
+
+    /**
+     * delete rule object by id
+     *
+     * @param ruleObjectId
+     * @return
+     */
+    public int deleteRuleObject(Integer ruleObjectId);
+
+    /**
+     * delete rule prize by id
+     *
+     * @param rulePrizeId
+     * @return
+     */
+    public int deleteRulePrize(Integer rulePrizeId);
 }

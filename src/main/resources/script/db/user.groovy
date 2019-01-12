@@ -15,7 +15,7 @@ databaseChangeLog(logicalFilePath: 'user.groovy') {
             column(name: 'user_role', type: 'TINYINT', remarks: 'role value') {
                 constraints(nullable: false)
             }
-            column(name: 'user_token', type: 'VARCHAR(100)', remarks: 'token') {
+            column(name: 'user_token', type: 'VARCHAR(255)', remarks: 'token') {
             }
             column(name: 'user_gender', type: 'TINYINT', remarks: 'gender') {
                 constraints(nullable: true)

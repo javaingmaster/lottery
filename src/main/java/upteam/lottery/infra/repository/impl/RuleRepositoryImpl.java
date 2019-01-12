@@ -58,7 +58,22 @@ public class RuleRepositoryImpl implements RuleRepository {
     }
 
     @Override
-    public List<Integer> listUsersInRule(Integer ruleId) {
+    public List<User> listUsersInRule(Integer ruleId) {
         return ruleMapper.listUsersInOneRule(ruleId);
+    }
+
+    @Override
+    public int deleteRuleObject(Integer ruleObjectId) {
+        return ruleObjectMapper.deleteByPrimaryKey(ruleObjectId);
+    }
+
+    @Override
+    public int deleteRulePrize(Integer rulePrizeId) {
+        return rulePrizeMapper.deleteByPrimaryKey(rulePrizeId);
+    }
+
+    @Override
+    public List<Group> listGroupsInRule(Integer ruleId) {
+        return ruleMapper.listGroupsInRule(ruleId);
     }
 }

@@ -13,4 +13,8 @@ public class AuthorityConstant {
     public static final int SUPER_ADMIN = 4;
 
     public static final String SECRET = "Secret_zty_1997";
+
+    public static final String SALT = "this is the salt!";
+
+    public static final String HAS_TOKEN = "hasToken";
 }

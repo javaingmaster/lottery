@@ -31,8 +31,6 @@ public class Prize implements Serializable {
     @Column(name = "prize_ratio")
     private Double prizeRatio;
 
-    private List<Activity> activities;
-
     public Prize() {
     }
 
@@ -71,14 +69,6 @@ public class Prize implements Serializable {
 
     public void setPrizeStock(Integer prizeStock) {
         this.prizeStock = prizeStock;
-    }
-
-    public List<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
     }
 
     public Double getPrizeRatio() {

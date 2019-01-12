@@ -28,7 +28,7 @@ public class JwtUtil {
         Claims claims = Jwts.claims();
         claims.put("userId", user.getUserId());
         claims.put("userName", user.getUserName());
-        claims.put("userAuthority", AuthorityConstant.USER);
+        claims.put("userAuthority", user.getUserRole());
 
         claims.setAudience("any");
         claims.setIssuer("zty");

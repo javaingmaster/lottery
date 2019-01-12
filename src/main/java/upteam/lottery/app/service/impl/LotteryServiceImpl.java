@@ -8,13 +8,16 @@ import upteam.lottery.app.service.LotteryService;
 import upteam.lottery.app.service.PrizeService;
 import upteam.lottery.domain.entity.*;
 import upteam.lottery.domain.repository.RuleRepository;
+import upteam.lottery.infra.constant.AuthorityConstant;
 import upteam.lottery.infra.mapper.RecordMapper;
 import upteam.lottery.infra.mapper.RuleObjectMapper;
 import upteam.lottery.infra.mapper.RulePrizeMapper;
 import upteam.lottery.infra.util.exception.CannotAccessException;
 import upteam.lottery.infra.util.exception.ErrorLotteryObjectInRuleException;
 import upteam.lottery.infra.util.other.LotteryUtil;
+import upteam.lottery.infra.util.other.ObjectTransferUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,13 +44,15 @@ public class LotteryServiceImpl implements LotteryService {
         Rule rule = ruleRepository.selectOneByActivityId(activityId);
 
         if (rule.getIfPublic() == 0) {
-            if (user != null && user.getUserRole() > 2) {
+            if (user != null && user.getUserRole() > AuthorityConstant.USER) {
                 return prizeService.listPrizeByRuleId(rule.getRule_id());
             } else {
                 throw new CannotAccessException("only admin can enter this activity");
             }
         } else {
-            List<Integer> users = ruleRepository.listUsersInRule(rule.getRule_id());
+            List<User> usersInRule = ruleRepository.listUsersInRule(rule.getRule_id());
+            List<Integer> users = ObjectTransferUtil.userToInt(usersInRule);
+
             if (users != null && users.size() > 0 && users.contains(user.getUserId())) {
                 logger.info("enter a public activity");
                 return prizeService.listPrizeByRuleId(rule.getRule_id());

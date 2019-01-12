@@ -29,8 +29,8 @@ public class LotteryController {
      * @return
      */
     @ApiOperation("enter an activity")
-    @GetMapping("/entry")
-    public Object enterActivity(@RequestBody User user, Integer activityId) {
+    @PostMapping("/activity/{activityId}")
+    public Object enterActivity(@RequestBody User user, @PathVariable(value = "activityId", required = true) Integer activityId) {
         logger.info("enter check");
         return Results.success(lotteryService.isAccess(activityId, user));
     }

@@ -8,7 +8,11 @@
             where la.activity_id=#{activityId} and lr.rule_id=la.activity_rule
     </select>
 
-    <select id="listUsersInOneRule" parameterType="int" resultType="int">
-        select lottery_object_id from rule_object where rule_id=#{ruleId}
+    <select id="listUsersInOneRule" parameterType="int" resultType="upteam.lottery.domain.entity.User">
+        select lottery_object_id as user_id,object_ratio as user_ratio from rule_object where rule_id=#{ruleId}
+    </select>
+
+    <select id="listGroupsInRule" parameterType="int" resultType="upteam.lottery.domain.entity.Group">
+        select lottery_object_id as group_id,object_ratio as group_ratio from rule_object where rule_id=#{ruleId}
     </select>
 </mapper>
