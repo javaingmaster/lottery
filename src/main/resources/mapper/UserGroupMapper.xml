@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="upteam.lottery.infra.mapper.UserGroupMapper">
+    <select id="listUsersInGroup" parameterType="int" resultType="upteam.lottery.domain.entity.User">
+        select lu.user_id,lu.user_name,lu.user_role,lu.user_gender from lottery_user lu,user_group ug
+            where ug.group_id=#{groupId} and ug.user_id=lu.user_id
+    </select>
+</mapper>

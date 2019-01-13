@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="upteam.lottery.infra.mapper.RuleMapper">
     <select id="listOneByActivityId" parameterType="int" resultType="upteam.lottery.domain.entity.Rule">
-        select lr.lottery_object,lr.if_back,lr.if_public from lottery_rule lr,lottery_activity la
+        select lr.rule_id,lr.lottery_object,lr.if_back,lr.if_public from lottery_rule lr,lottery_activity la
             where la.activity_id=#{activityId} and lr.rule_id=la.activity_rule
     </select>
 

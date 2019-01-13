@@ -46,6 +46,7 @@ public class LotteryController {
     @PostMapping
     public Object doLottery(@RequestBody User user, Integer activityId) {
         logger.info("do a lottery");
-        return Results.success(lotteryService.doLottery(activityId, user));
+        Object o=lotteryService.doLottery(activityId, user);
+        return Results.success(o);
     }
 }

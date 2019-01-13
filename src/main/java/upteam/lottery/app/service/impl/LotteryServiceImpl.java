@@ -9,9 +9,7 @@ import upteam.lottery.app.service.PrizeService;
 import upteam.lottery.domain.entity.*;
 import upteam.lottery.domain.repository.RuleRepository;
 import upteam.lottery.infra.constant.AuthorityConstant;
-import upteam.lottery.infra.mapper.RecordMapper;
-import upteam.lottery.infra.mapper.RuleObjectMapper;
-import upteam.lottery.infra.mapper.RulePrizeMapper;
+import upteam.lottery.infra.mapper.*;
 import upteam.lottery.infra.util.exception.CannotAccessException;
 import upteam.lottery.infra.util.exception.ErrorLotteryObjectInRuleException;
 import upteam.lottery.infra.util.other.LotteryUtil;
@@ -37,6 +35,10 @@ public class LotteryServiceImpl implements LotteryService {
     private RulePrizeMapper rulePrizeMapper;
     @Autowired
     private RecordMapper recordMapper;
+    @Autowired
+    private ActivityMapper activityMapper;
+    @Autowired
+    private RuleMapper ruleMapper;
 
     @Transactional
     @Override
@@ -66,7 +68,9 @@ public class LotteryServiceImpl implements LotteryService {
     @Transactional
     @Override
     public Object doLottery(Integer activityId, User user) {
-        Rule rule = ruleRepository.selectOneByActivityId(activityId);
+        //Rule rule = ruleRepository.selectOneByActivityId(activityId);   ??????????????????????????????
+        Activity activity=activityMapper.selectByPrimaryKey(activityId);
+        Rule rule=ruleMapper.selectByPrimaryKey(activity.getActivityRule());
         List<Record> records = null;
         List<RuleObject> ruleObjects = ruleObjectMapper.listRuleObject(rule.getRule_id());
         List<RulePrize> rulePrizes = rulePrizeMapper.listRulePrize(rule.getRule_id());
@@ -86,7 +90,7 @@ public class LotteryServiceImpl implements LotteryService {
         } else {
             //user lottery
             if (rule.getIfBack() == 0) {
-                records = LotteryUtil.personalUnrepeatableLottery(rule, ruleObjects, rulePrizes);
+                records = LotteryUtil.personalUnRepeatableLottery(rule,ruleObjects,rulePrizes);
             } else {
                 records = LotteryUtil.personalRepeatableLottery(rule, ruleObjects, rulePrizes);
             }

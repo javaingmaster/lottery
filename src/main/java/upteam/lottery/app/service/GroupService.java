@@ -22,4 +22,10 @@ public interface GroupService {
      * @return
      */
     public Group create(Group group);
+
+    /**
+     * @param groupId
+     * @return
+     */
+    public Group queryById(Integer groupId);
 }
