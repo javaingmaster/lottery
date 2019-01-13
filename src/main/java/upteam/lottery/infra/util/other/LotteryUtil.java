@@ -42,9 +42,7 @@ public class LotteryUtil {
         Record record = new Record();
         double userRandom = Math.random() * 100;
         double prizeRandom = Math.random() * 100;
-        //System.out.println(userRandom);
-        //System.out.println(prizeRandom);
-
+        parse(rule, ruleObjects, rulePrizes);
         double userProbability = avgUserProbability;
         if (userNumber == 0) {
             for (int i = 0; i < users; i++) {
@@ -103,7 +101,9 @@ public class LotteryUtil {
             }
         }
 
-        return repeatableLottery(rule, ruleObjects, rulePrizes);
+        List<Record> result=new ArrayList<>();
+        result.add(record);
+        return result;
     }
 
     public static List<Record> personalUnRepeatableLottery(Rule rule, List<RuleObject> ruleObjects,
@@ -111,7 +111,7 @@ public class LotteryUtil {
         Record record = new Record();
         List<Integer> userIdList = new ArrayList<Integer>();
         List<Integer> appointedUserIdList = new ArrayList<Integer>();
-
+        parse(rule, ruleObjects, rulePrizes);
         p: while (users > 0) {
             double userRandom = Math.random() * 100;
             double prizeRandom = Math.random() * 100;
@@ -190,16 +190,16 @@ public class LotteryUtil {
                 }
             }
         }
-        return unrepeatableLottery(rule, ruleObjects, rulePrizes);
+        List<Record> result=new ArrayList<>();
+        result.add(record);
+        return result;
     }
 
     public static List<Record> repeatableLottery(Rule rule, List<RuleObject> ruleObjects, List<RulePrize> rulePrizes){
         Record record = new Record();
         double groupRandom = Math.random() * 100;
         double prizeRandom = Math.random() * 100;
-        //System.out.println(userRandom);
-        //System.out.println(prizeRandom);
-
+        parse(rule, ruleObjects, rulePrizes);
         double groupProbability = avgGroupProbability;
         if (groupNumber == 0) {
             for (int i = 0; i < groups; i++) {
@@ -258,7 +258,9 @@ public class LotteryUtil {
             }
         }
 
-        return repeatableLottery(rule, ruleObjects, rulePrizes);
+        List<Record> result=new ArrayList<>();
+        result.add(record);
+        return result;
 
     }
 
@@ -266,7 +268,7 @@ public class LotteryUtil {
         Record record = new Record();
         List<Integer> userIdList = new ArrayList<Integer>();
         List<Integer> appointedUserIdList = new ArrayList<Integer>();
-
+        parse(rule, ruleObjects, rulePrizes);
         p: while (groups > 0) {
             double userRandom = Math.random() * 100;
             double prizeRandom = Math.random() * 100;
@@ -346,11 +348,12 @@ public class LotteryUtil {
             }
         }
 
-        return unrepeatableLottery(rule, ruleObjects, rulePrizes);
-
+        List<Record> result=new ArrayList<>();
+        result.add(record);
+        return result;
     }
 
-    private static Object parse(Rule rule, List<RuleObject> ruleObjects, List<RulePrize> rulePrizes) {
+    private static void parse(Rule rule, List<RuleObject> ruleObjects, List<RulePrize> rulePrizes) {
         users = ruleObjects.size();
         groups = ruleObjects.size();
         userId = new int[users];
@@ -370,10 +373,11 @@ public class LotteryUtil {
         }
         userNumber = userNumbers.size();
         appointedUserId = new int[userNumber];
+        customUserProbability = new double[userNumber];
         int index=0;
         for(RuleObject item : ruleObjects){
             if(item.getObjectRatio()!=null){
-                appointedUserId[index] = item.getRuleObjectId();
+                appointedUserId[index] = item.getLotteryObjectId();
                 customUserProbability[index] = item.getObjectRatio();
                 avgUserProbability = avgUserProbability - customUserProbability[index];
                 index++;
@@ -391,10 +395,11 @@ public class LotteryUtil {
         }
         groupNumber = groupNumbers.size();
         appointedGroupId = new int[groupNumber];
+        customGroupProbability = new double[groupNumber];
         index=0;
         for(RuleObject item : ruleObjects){
             if(item.getObjectRatio()!=null){
-                appointedGroupId[index] = item.getRuleObjectId();
+                appointedGroupId[index] = item.getLotteryObjectId();
                 customGroupProbability[index] = item.getObjectRatio();
                 avgGroupProbability = avgGroupProbability - customGroupProbability[index];
                 index++;
@@ -415,6 +420,7 @@ public class LotteryUtil {
         }
         prizeLevel = prizeLevels.size();
         prizeId = new int[prizeLevel];
+        customPrizeProbability = new double[prizeLevel];
         index = 0;
         for(RulePrize item : prizeLevels){
             if(item.getPrizeRatio()!=null){
@@ -434,7 +440,5 @@ public class LotteryUtil {
         avgUserProbability = avgUserProbability / (users - userNumber);
         avgGroupProbability = avgGroupProbability / (groups - groupNumber);
         avgPrizeProbability = avgPrizeProbability / (prizes - prizeLevel);
-
-        return parse(rule, ruleObjects, rulePrizes);
     }
 }

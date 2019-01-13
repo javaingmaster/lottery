@@ -36,14 +36,14 @@ public class Record implements Serializable {
     @NotNull
     private Integer prizeId;
 
+    //@NotNull
     @Column(name = "activity_id")
-    @NotNull
     private Integer activityId;
 
     public Record() {
     }
 
-    public Record(@NotNull Integer recordType, @NotNull Integer luckyDogId, @NotNull Date luckyTime, @NotNull Integer prizeId, @NotNull Integer activityId) {
+    public Record(@NotNull Integer recordType, @NotNull Integer luckyDogId, @NotNull Date luckyTime, @NotNull Integer prizeId, Integer activityId) {
         this.recordType = recordType;
         this.luckyDogId = luckyDogId;
         this.luckyTime = luckyTime;
